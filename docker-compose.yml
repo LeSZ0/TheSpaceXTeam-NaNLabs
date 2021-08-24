@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  server:
+    container_name: server_api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: the_s_x_team_server_api
+    volumes:
+      - .:/app
+    env_file:
+      - ./envs.env
+    ports:
+      - "8000:8000"
+    command: /start
+    networks:
+      - server_net
+
+networks:
+  server_net:
